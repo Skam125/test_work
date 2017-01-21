@@ -6,11 +6,13 @@ $password = '';
 
 try {
     $pdo = new PDO($dsn, $user, $password);
-    echo '<pre>';
+
     if (isset($_GET['ident'])) {
+        echo '<pre>';
         print_r(unserialize(versionControl($pdo, $_GET)));
+        echo '</pre>';
     }
-    echo '</pre>';
+
 } catch (PDOException $e) {
     echo 'Подключение не удалось: ' . $e->getMessage();
 }
